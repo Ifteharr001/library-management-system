@@ -32,6 +32,20 @@ const Navbar = () => {
           Add Book
         </NavLink>
       </li>
+      <li className="font-bold">
+        <NavLink
+          to="all-book"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? ""
+              : isActive
+              ? "bg-gradient-to-r from-[#3873b6]  to-[#5d9ee2]  text-transparent bg-clip-text border-b-[3px] border-b-[#3873b6]"
+              : ""
+          }
+        >
+          All Book
+        </NavLink>
+      </li>
     </>
   );
 

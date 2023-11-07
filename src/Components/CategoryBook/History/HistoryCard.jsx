@@ -2,6 +2,7 @@
 const HistoryCard = ({ history }) => {
   // eslint-disable-next-line react/prop-types
   const { image, authorName, name, bookCategory, rating } = history;
+  console.log(name)
   return (
     <div>
       <div className="card w-[300px] h-[450px]   bg-base-100 shadow-xl border-4">
