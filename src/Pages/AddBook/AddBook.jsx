@@ -1,6 +1,13 @@
+import { useState } from "react";
+import ReactStars from "react-rating-stars-component"
 import Swal from "sweetalert2";
 
 const AddBook = () => {
+  const [rating, setRating] = useState(3);
+
+  const ratingChanged = (newRating) => {
+    setRating(newRating); 
+  };
   const handleAddBook = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -10,7 +17,7 @@ const AddBook = () => {
     const bookCategory = form.bookCategory.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
-    const rating = form.rating.value;
+    
 
     const newBook = {
       name,
@@ -159,13 +166,22 @@ const AddBook = () => {
                     Rating
                   </span>
                 </label>
-                <input
+                <ReactStars
+                  count={5} // Number of stars
+                  size={40}
+                  value={3} // Set the initial value
+                  onChange={ratingChanged}
+                  name="rating"
+                  required
+                />
+                {/* <input
+                
                   type="text"
                   placeholder="Rating"
                   name="rating"
                   className="input input-bordered text-white  bg-transparent border-2 border-white rounded-[100px]"
                   required
-                />
+                /> */}
               </div>
               <input
                 className="btn btn-block rounded-[100px] bg-[#192e44] border-none text-white mt-8"

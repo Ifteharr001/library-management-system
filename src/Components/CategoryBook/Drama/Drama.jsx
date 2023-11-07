@@ -5,7 +5,7 @@ const Drama = () => {
     const dramaData = useLoaderData()
     return (
       <div className="w-[1140px] mx-auto mt-16">
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 gap-6">
           {dramaData
             .filter((drama) => drama.bookCategory === "drama")
             .map((drama) => (

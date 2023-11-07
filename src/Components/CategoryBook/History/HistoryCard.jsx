@@ -1,13 +1,19 @@
+import ReactStars from "react-rating-stars-component";
+
 // eslint-disable-next-line react/prop-types
 const HistoryCard = ({ history }) => {
   // eslint-disable-next-line react/prop-types
   const { image, authorName, name, bookCategory, rating } = history;
-  console.log(name)
+  console.log(name);
   return (
     <div>
-      <div className="card w-[300px] h-[450px]   bg-base-100 shadow-xl border-4">
+      <div className="card h-[450px]   bg-base-100 shadow-xl border-4">
         <figure>
-          <img className="object-cover h-[250px] mt-4 " src={image} alt="Shoes" />
+          <img
+            className="object-cover h-[250px] mt-4 "
+            src={image}
+            alt="Shoes"
+          />
         </figure>
         <div className="card-body h-[200px]">
           <h2 className="card-title bg-gradient-to-r from-[#3873b6]  to-[#5d9ee2]  text-transparent bg-clip-text ">
@@ -20,9 +26,17 @@ const HistoryCard = ({ history }) => {
             </span>{" "}
             {authorName}
           </p>
-          <p className="font-bold"><span className="bg-gradient-to-r from-[#3873b6]  to-[#5d9ee2]  text-transparent bg-clip-text ">Category:</span> {bookCategory}</p>
+          <p className="font-bold">
+            <span className="bg-gradient-to-r from-[#3873b6]  to-[#5d9ee2]  text-transparent bg-clip-text ">
+              Category:
+            </span>{" "}
+            {bookCategory}
+          </p>
           <div className="flex items-center">
-            <p>{rating}</p>
+            <p>
+              {" "}
+              <ReactStars count={5} size={30} value={rating} name="rating" />
+            </p>
             <div className="card-actions">
               <button className="btn bg-gradient-to-r from-[#3873b6] to-[#5d9ee2] border-none text-white rounded-full font-bold ">
                 See Details
