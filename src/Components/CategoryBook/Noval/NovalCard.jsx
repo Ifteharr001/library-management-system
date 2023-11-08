@@ -1,8 +1,9 @@
 import ReactStars from "react-rating-stars-component";
+import { Link } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 const NovalCard = ({novel}) => {
   // eslint-disable-next-line react/prop-types
-  const { image, authorName, name, bookCategory, rating } = novel;
+  const {_id, image, authorName, name, bookCategory, rating } = novel;
   return (
     <div>
       <div className="card h-[450px]   bg-base-100 shadow-xl border-4">
@@ -36,9 +37,11 @@ const NovalCard = ({novel}) => {
               <ReactStars count={5} size={30} value={rating} name="rating" />
             </p>
             <div className="card-actions">
-              <button className="btn bg-gradient-to-r from-[#3873b6] to-[#5d9ee2] border-none text-white rounded-full font-bold ">
+              <Link to={`/details/${_id}`}>
+                <button className="btn bg-gradient-to-r from-[#3873b6] to-[#5d9ee2] border-none text-white rounded-full font-bold ">
                 See Details
               </button>
+              </Link>
             </div>
           </div>
         </div>

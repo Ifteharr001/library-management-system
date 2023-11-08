@@ -11,6 +11,7 @@ import UpdateBooks from "../Components/UpdateBooks/UpdateBooks";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
 import PrivateRoute from "./PrivateRoute";
+import DetailBook from "../Components/CategoryBook/DetailBook/DetailBook";
 
 
 
@@ -25,17 +26,35 @@ const router = createBrowserRouter([
       },
       {
         path: "updateBook/:id",
-        element: <PrivateRoute><UpdateBooks></UpdateBooks></PrivateRoute>
-        loader: ({params}) =>
+        element: (
+          <PrivateRoute>
+            <UpdateBooks></UpdateBooks>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/books/${params.id}`),
+      },
+      {
+        path: "details/:id",
+        element: <DetailBook></DetailBook>,
+        loader: ({ params }) =>
           fetch(`http://localhost:5000/books/${params.id}`),
       },
       {
         path: "add-book",
-        element: <PrivateRoute><AddBook></AddBook></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <AddBook></AddBook>
+          </PrivateRoute>
+        ),
       },
       {
         path: "all-book",
-        element: <PrivateRoute><AllBook></AllBook></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AllBook></AllBook>
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:5000/books"),
       },
       {
@@ -60,13 +79,12 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "register",
-        element: <Register></Register>
-      }
-      
+        element: <Register></Register>,
+      },
     ],
   },
 ]);
