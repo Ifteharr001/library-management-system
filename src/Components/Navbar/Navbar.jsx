@@ -119,6 +119,9 @@ const Navbar = () => {
               <FaMoon className="dark:text-white text-black mr-4 text-2xl"></FaMoon>
             </button>
           </div>
+          {user && <p className="font-bold mr-4">{user.displayName}</p>}
+          {user && <img className="rounded-full border-4 border-[#3873b6] h-[40px] w-[40px] mr-4" src={user?.photoURL} alt="" />}
+
           {user ? (
             <Link
               onClick={handleLogOut}

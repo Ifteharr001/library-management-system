@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 const Register = () => {
@@ -7,6 +7,8 @@ const Register = () => {
     const [success, setSuccess] = useState("");
     const [show, setShow] = useState(false);
     const { createUser, googleProvider } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
     const handleRegister = (e) => {
       e.preventDefault();
       const form = e.target;
@@ -28,22 +30,26 @@ const Register = () => {
         setRegisterError("Do not have a spacial character");
         return;
       }
+      
 
       createUser(email, password)
         .then((result) => {
           console.log(result.user);
           setSuccess("User Created Successfully");
+          navigate(location?.state ? location.state : "/");
         })
         .catch((error) => {
           console.log(error);
           setRegisterError("ERROR: Email Already Used");
         });
     };
+    
 
     const handleGoogleRegister = () => {
       googleProvider()
         .then((result) => {
           console.log(result.user);
+          navigate(location?.state ? location.state : "/");
         })
         .catch((error) => {
           console.log(error);

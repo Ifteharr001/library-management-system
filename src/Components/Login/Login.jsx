@@ -1,11 +1,14 @@
 import {  useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
     const { signIn, googleProvider } = useContext(AuthContext);
     const [show, setShow] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+     console.log(location)
     const handleLogin = (e) => {
       e.preventDefault();
       const form = e.target;
@@ -15,6 +18,7 @@ const Login = () => {
       signIn(email, password)
         .then((result) => {
           console.log(result.user);
+            navigate(location?.state ? location.state : '/')
         })
         .catch((error) => {
           console.log(error);
@@ -24,6 +28,7 @@ const Login = () => {
       googleProvider()
         .then((result) => {
           console.log(result.user);
+          navigate(location?.state ? location.state : "/");
         })
         .catch((error) => {
           console.log(error);
