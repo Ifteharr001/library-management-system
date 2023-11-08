@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import ReactStars from "react-rating-stars-component";
 // eslint-disable-next-line no-unused-vars, react/prop-types
 const AllBookCard = ({ book }) => {
   // eslint-disable-next-line react/prop-types
@@ -32,7 +32,10 @@ const AllBookCard = ({ book }) => {
             {bookCategory}
           </p>
           <div className="flex items-center">
-            <p>{rating}</p>
+            <p className="">
+              {" "}
+              <ReactStars count={5} size={30} value={rating} name="rating" />
+            </p>
             <div className="card-actions">
               <Link
                 className="btn bg-gradient-to-r from-[#3873b6] to-[#5d9ee2] border-none text-white rounded-full font-bold "

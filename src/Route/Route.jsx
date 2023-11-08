@@ -8,6 +8,9 @@ import Thriller from "../Components/CategoryBook/Thriller/Thriller";
 import Noval from "../Components/CategoryBook/Noval/Noval";
 import AllBook from "../Pages/AllBook/AllBook";
 import UpdateBooks from "../Components/UpdateBooks/UpdateBooks";
+import Login from "../Components/Login/Login";
+import Register from "../Components/Register/Register";
+
 
 
 const router = createBrowserRouter([
@@ -54,6 +57,14 @@ const router = createBrowserRouter([
         element: <Noval></Noval>,
         loader: () => fetch("http://localhost:5000/books"),
       },
+      {
+        path: "login",
+        element: <Login></Login>
+      },
+      {
+        path: "register",
+        element: <Register></Register>
+      }
       
     ],
   },
