@@ -1,6 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { FaMoon } from "react-icons/fa6";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const [color, setColor] = useState("light");
+    const handleColor = () => {
+      const html = document.documentElement;
+      if (color == "light") {
+        html.classList.remove("light");
+        html.classList.add("dark");
+        setColor("dark");
+      } else {
+        html.classList.remove("dark");
+        html.classList.add("light");
+        setColor("light");
+      }
+    };
+
+    const handleLogOut = () => {
+      logOut().then().catch();
+    };
   const manu = (
     <>
       <li className="font-bold rounded-none">
@@ -92,7 +114,26 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{manu}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <div>
+            <button onClick={handleColor} type="button">
+              <FaMoon className="dark:text-white text-black mr-4 text-2xl"></FaMoon>
+            </button>
+          </div>
+          {user ? (
+            <Link
+              onClick={handleLogOut}
+              className="btn bg-gradient-to-r from-[#3873b6]  to-[#5d9ee2] text-white font-bold border-none w-[100px]"
+            >
+              Log Out
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="btn bg-gradient-to-r from-[#3873b6]  to-[#5d9ee2] text-white font-bold border-none w-[100px]"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

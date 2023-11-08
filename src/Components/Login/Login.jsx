@@ -1,9 +1,10 @@
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
-    // const { signIn, googleProvider } = useContext();
+    const { signIn, googleProvider } = useContext(AuthContext);
     const [show, setShow] = useState(false);
     const handleLogin = (e) => {
       e.preventDefault();
@@ -11,22 +12,22 @@ const Login = () => {
       const email = form.email.value;
       const password = form.password.value;
       console.log(email, password);
-    //   signIn(email, password)
-    //     .then((result) => {
-    //       console.log(result.user);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
+      signIn(email, password)
+        .then((result) => {
+          console.log(result.user);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
     const handleGoogleLogin = () => {
-    //   googleProvider()
-    //     .then((result) => {
-    //       console.log(result.user);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
+      googleProvider()
+        .then((result) => {
+          console.log(result.user);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
     return (
       <div>

@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { AuthContext } from "../../Provider/AuthProvider";
 const Register = () => {
     const [registerError, setRegisterError] = useState("");
     const [success, setSuccess] = useState("");
     const [show, setShow] = useState(false);
-    // const { createUser, googleProvider } = useContext(AuthContext);
+    const { createUser, googleProvider } = useContext(AuthContext);
     const handleRegister = (e) => {
       e.preventDefault();
       const form = e.target;
