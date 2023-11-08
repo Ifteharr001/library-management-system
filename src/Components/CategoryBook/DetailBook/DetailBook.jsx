@@ -3,7 +3,6 @@ import ReactStars from "react-rating-stars-component";
 const DetailBook = () => {
   const bookDetail = useLoaderData();
   const {
-    _id,
     image,
     authorName,
     name,
