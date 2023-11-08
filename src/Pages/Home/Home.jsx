@@ -5,11 +5,11 @@ import ServiceCard from "../../Components/HomeCompo/ServiceCard/ServiceCard";
 
 const Home = () => {
     return (
-        <div>
-            <Hero></Hero>,
+        <div className="dark:bg-gray-800">
+            <Hero></Hero>, 
             <ServiceCard></ServiceCard>,
             <Category></Category>,
-            <BlogSection></BlogSection>
+            <BlogSection></BlogSection> 
         </div>
     );
 };

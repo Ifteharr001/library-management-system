@@ -15,8 +15,6 @@ import DetailBook from "../Components/CategoryBook/DetailBook/DetailBook";
 import BorowedBooks from "../Pages/BorwedBooks/BorowedBooks";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,13 +33,17 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/books/${params.id}`),
+          fetch(
+            `https://library-management-system-server-steel.vercel.app/books/${params.id}`
+          ),
       },
       {
         path: "details/:id",
         element: <DetailBook></DetailBook>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/books/${params.id}`),
+          fetch(
+            `https://library-management-system-server-steel.vercel.app/books/${params.id}`
+          ),
       },
       {
         path: "add-book",
@@ -58,31 +60,50 @@ const router = createBrowserRouter([
             <AllBook></AllBook>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/books"),
+        loader: () =>
+          fetch(
+            "https://library-management-system-server-steel.vercel.app/books"
+          ),
       },
       {
         path: "book/History",
         element: <History></History>,
-        loader: () => fetch("http://localhost:5000/books"),
+        loader: () =>
+          fetch(
+            "https://library-management-system-server-steel.vercel.app/books"
+          ),
       },
       {
         path: "book/Drama",
         element: <Drama></Drama>,
-        loader: () => fetch("http://localhost:5000/books"),
+        loader: () =>
+          fetch(
+            "https://library-management-system-server-steel.vercel.app/books"
+          ),
       },
       {
         path: "book/Thriller",
         element: <Thriller></Thriller>,
-        loader: () => fetch("http://localhost:5000/books"),
+        loader: () =>
+          fetch(
+            "https://library-management-system-server-steel.vercel.app/books"
+          ),
       },
       {
         path: "book/Novel",
         element: <Noval></Noval>,
-        loader: () => fetch("http://localhost:5000/books"),
+        loader: () =>
+          fetch(
+            "https://library-management-system-server-steel.vercel.app/books"
+          ),
       },
       {
         path: "borrowed-books",
-        element: <PrivateRoute><BorowedBooks></BorowedBooks></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <BorowedBooks></BorowedBooks>
+          </PrivateRoute>
+        ),
       },
       {
         path: "login",

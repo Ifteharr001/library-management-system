@@ -1,12 +1,12 @@
 import { useState } from "react";
-import ReactStars from "react-rating-stars-component"
+import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
 
 const AddBook = () => {
   const [rating, setRating] = useState(3);
 
   const ratingChanged = (newRating) => {
-    setRating(newRating); 
+    setRating(newRating);
   };
   const handleAddBook = (e) => {
     e.preventDefault();
@@ -17,7 +17,6 @@ const AddBook = () => {
     const bookCategory = form.bookCategory.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
-    
 
     const newBook = {
       name,
@@ -30,7 +29,7 @@ const AddBook = () => {
     };
     console.log(newBook);
 
-    fetch("http://localhost:5000/books", {
+    fetch("https://library-management-system-server-steel.vercel.app/books", {
       method: "POST",
       headers: {
         "content-type": "application/json",

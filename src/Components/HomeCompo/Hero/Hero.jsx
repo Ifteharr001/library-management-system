@@ -12,7 +12,7 @@ const Hero = () => {
         <div className="absolute  w-[100%] h-[100%] top-0 flex flex-col justify-center text-center items-center text-white">
           <div className="grid grid-cols-2 w-[1140px] mx-auto">
             <div className="col-span-1 text-left">
-              <h1 className="text-5xl font-bold mb-10 ">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 ">
                 Get Your{" "}
                 <span className="bg-gradient-to-r from-[#3873b6]  to-[#5d9ee2] inline-block text-transparent bg-clip-text">
                   New Book Collections

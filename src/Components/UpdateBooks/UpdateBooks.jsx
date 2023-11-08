@@ -3,7 +3,16 @@ import Swal from "sweetalert2";
 
 const UpdateBooks = () => {
   const data = useLoaderData();
-  const {_id, image, authorName, quantity, description, name, bookCategory, rating } = data;
+  const {
+    _id,
+    image,
+    authorName,
+    quantity,
+    description,
+    name,
+    bookCategory,
+    rating,
+  } = data;
 
   const handleUpdateBook = (e) => {
     e.preventDefault();
@@ -25,13 +34,16 @@ const UpdateBooks = () => {
       description,
       rating,
     };
-    fetch(` http://localhost:5000/books/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateBook),
-    })
+    fetch(
+      ` https://library-management-system-server-steel.vercel.app/books/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateBook),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

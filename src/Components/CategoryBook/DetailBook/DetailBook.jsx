@@ -1,5 +1,8 @@
 import { Link, useLoaderData } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 const DetailBook = () => {
   const bookDetail = useLoaderData();
   const {
@@ -11,6 +14,34 @@ const DetailBook = () => {
     rating,
     description,
   } = bookDetail;
+  const { user } = useContext(AuthContext);
+  const handleBook = () => {
+    const email = user.email;
+    const order = {
+      bookDetail,
+      email,
+    };
+
+    fetch("https://library-management-system-server-steel.vercel.app/borrow", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success",
+            text: "Book Added Successfully",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+        }
+      });
+  };
+
   return (
     <div className="grid grid-cols-3 gap-6 w-[1140px] mx-auto mt-16">
       <div className=" col-span-2 border-8 rounded-2xl border-[#3873b6]">
@@ -51,9 +82,11 @@ const DetailBook = () => {
               </p>
             </div>
           </div>
-          <button className="btn bg-gradient-to-r from-[#3873b6] to-[#5d9ee2] border-none text-white font-bold justify-items-end my-8 mx-4">
-            Borrow
-          </button>
+          <Link onClick={handleBook}>
+            <button className="btn bg-gradient-to-r from-[#3873b6] to-[#5d9ee2] border-none text-white font-bold justify-items-end my-8 mx-4">
+              Borrow
+            </button>
+          </Link>
         </div>
       </div>
     </div>

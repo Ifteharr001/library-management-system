@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { FaMoon } from "react-icons/fa6";
+import { FaMoon, FaSun } from "react-icons/fa6";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -25,7 +25,7 @@ const Navbar = () => {
     };
   const manu = (
     <>
-      <li className="font-bold rounded-none">
+      <li className="font-bold rounded-none dark:text-white">
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
@@ -40,7 +40,7 @@ const Navbar = () => {
         </NavLink>
       </li>
 
-      <li className="font-bold">
+      <li className="font-bold dark:text-white">
         <NavLink
           to="add-book"
           className={({ isActive, isPending }) =>
@@ -54,7 +54,7 @@ const Navbar = () => {
           Add Book
         </NavLink>
       </li>
-      <li className="font-bold">
+      <li className="font-bold dark:text-white">
         <NavLink
           to="all-book"
           className={({ isActive, isPending }) =>
@@ -68,7 +68,7 @@ const Navbar = () => {
           All Book
         </NavLink>
       </li>
-      <li className="font-bold">
+      <li className="font-bold dark:text-white">
         <NavLink
           to="borrowed-books"
           className={({ isActive, isPending }) =>
@@ -86,8 +86,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="relative z-10">
-      <div className="navbar  w-[1100px] mx-auto">
+    <div className="relative z-10 dark:bg-gray-700">
+      <div className="navbar  lg:w-[1100px] lg:mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -108,7 +108,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu dropdown-content  mt-3 z-[1] p-2  w-52  shadow bg-base-100 rounded-none"
+              className="menu dropdown-content  mt-3 z-[1] p-2   shadow bg-base-100 rounded-none"
             >
               {manu}
             </ul>
@@ -130,11 +130,21 @@ const Navbar = () => {
         <div className="navbar-end">
           <div>
             <button onClick={handleColor} type="button">
-              <FaMoon className="dark:text-white text-black mr-4 text-2xl"></FaMoon>
+              {color == "light" ? (
+                <FaMoon className=" text-black mr-4 text-2xl"></FaMoon>
+              ) : (
+                <FaSun className="text-white  mr-4 text-2xl"></FaSun>
+              )}
             </button>
           </div>
-          {user && <p className="font-bold mr-4">{user.displayName}</p>}
-          {user && <img className="rounded-full border-4 border-[#3873b6] h-[40px] w-[40px] mr-4" src={user?.photoURL} alt="" />}
+          {user && <p className="font-bold mr-4 dark:text-white">{user.displayName}</p>}
+          {user && (
+            <img
+              className="rounded-full border-4 border-[#3873b6] h-[40px] w-[40px] mr-4"
+              src={user?.photoURL}
+              alt=""
+            />
+          )}
 
           {user ? (
             <Link
