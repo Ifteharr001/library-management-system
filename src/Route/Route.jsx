@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import DetailBook from "../Components/CategoryBook/DetailBook/DetailBook";
 import BorowedBooks from "../Pages/BorwedBooks/BorowedBooks";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
+import ReadBook from "../Components/ReadBook/ReadBook";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "details/:id",
-        element: <DetailBook></DetailBook>,
+        element: <PrivateRoute><DetailBook></DetailBook></PrivateRoute>,
         loader: ({ params }) =>
           fetch(
             `https://library-management-system-server-steel.vercel.app/books/${params.id}`
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
             <BorowedBooks></BorowedBooks>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "read-more",
+        element: <ReadBook></ReadBook>
       },
       {
         path: "login",

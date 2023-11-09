@@ -55,7 +55,7 @@ const DetailBook = () => {
             </h2>
             <p className="text-xl ">{description}</p>
             <Link
-              to="/readMore"
+              to="/read-more"
               className="bg-gradient-to-r from-[#3873b6]  to-[#5d9ee2] inline-block text-transparent bg-clip-text text-xl font-bold underline border-b-2"
             >
               Read More
