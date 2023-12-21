@@ -1,6 +1,6 @@
 const ServiceCard = () => {
   return (
-    <div className="mt-16 w-[1140px] mx-auto">
+    <div className="mt-16 lg:w-[1140px] mx-auto">
       <div className="card grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6  text-white font-bold border-none shadow-xl">
         <div className="card-body grid grid-cols-2 rounded-xl justify-center bg-gradient-to-r from-[#3873b6] to-[#5d9ee2] border-none text-white font-bold items-center">
           <div>

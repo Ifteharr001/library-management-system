@@ -16,35 +16,48 @@ const BorowedBooks = () => {
       .then((data) => setBorrowed(data));
   }, [url]);
 
-  const handleBookReturn = (id) => {
-   
-      fetch(
-        `https://library-management-system-server-steel.vercel.app/borrow/${id}`,
-        {
-          method: "DELETE",
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.deletedCount > 0) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
+  const handleBookReturn = (id, bookId) => {
+    fetch(
+      `https://library-management-system-server-steel.vercel.app/borrow/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            title: "Return Success!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+          // Update the quantity of the returned book
+          // Update the quantity of the returned book
+          fetch(
+            `https://library-management-system-server-steel.vercel.app/updateQuantity/${bookId}`,
+            {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({ $inc: { quantity: 1 } }), // Increase quantity by 1
+            }
+          )
+            .then((res) => res.json())
+            .then((updateData) => {
+              console.log("Book quantity updated:", updateData);
+              // Update the state or re-fetch the data if needed
             });
-            // eslint-disable-next-line react/prop-types
-            const remaining = borrowed?.filter(
-              (borrows) => borrows?._id !== id
-            );
-            setBorrowed(remaining)
-            
-          }
-        });
-    }
+          // eslint-disable-next-line react/prop-types
+          const remaining = borrowed?.filter((borrows) => borrows?._id !== id);
+          setBorrowed(remaining);
+        }
+      });
+  };
  
   return (
-    <div className="mt-16">
+    <div className="pt-16 dark:bg-gray-800 dark:text-white">
       {borrowed?.map((borrow) => (
         <BorrowedBooksCard
           key={borrow._id}

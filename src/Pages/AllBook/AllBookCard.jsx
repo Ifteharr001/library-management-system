@@ -5,8 +5,8 @@ const AllBookCard = ({ book }) => {
   // eslint-disable-next-line react/prop-types
   const { _id, image, authorName, name, bookCategory, rating } = book;
   return (
-    <div>
-      <div className="card h-[450px]   bg-base-100 shadow-xl border-4">
+    <div className="">
+      <div className="card h-[450px]   bg-base-100 shadow-xl border-4 dark:bg-[#000] dark:text-white">
         <figure>
           <img
             className="object-cover h-[250px] mt-4 "

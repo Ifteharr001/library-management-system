@@ -9,7 +9,7 @@ const Category = () => {
       .then((data) => setCategory(data));
   }, []);
   return (
-    <div className="mt-16 w-[1140px] mx-auto">
+    <div className="mt-16 lg:w-[1140px] mx-auto">
       <h2 className="text-center font-bold dark:text-white text-5xl">
         <span className="bg-gradient-to-r from-[#3873b6]  to-[#5d9ee2] inline-block text-transparent bg-clip-text">
           Best Book

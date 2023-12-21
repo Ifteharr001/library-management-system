@@ -3,11 +3,6 @@ import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
 
 const AddBook = () => {
-  const [rating, setRating] = useState(3);
-
-  const ratingChanged = (newRating) => {
-    setRating(newRating);
-  };
   const handleAddBook = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -25,32 +20,31 @@ const AddBook = () => {
       bookCategory,
       quantity,
       description,
-      rating,
     };
     console.log(newBook);
 
-    fetch("https://library-management-system-server-steel.vercel.app/books", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newBook),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Success",
-            text: "Book Added Successfully",
-            icon: "success",
-            confirmButtonText: "Ok",
-          });
-        }
-      });
+    // fetch("https://library-management-system-server-steel.vercel.app/books", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(newBook),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.insertedId) {
+    //       Swal.fire({
+    //         title: "Success",
+    //         text: "Book Added Successfully",
+    //         icon: "success",
+    //         confirmButtonText: "Ok",
+    //       });
+    //     }
+    //   });
   };
   return (
-    <div className="py-6">
+    <div className="py-6 dark:bg-gray-800 dark:text-white">
       <h2 className="text-4xl font-bold  text-center ">
         Add{" "}
         <span className="bg-gradient-to-r from-[#3873b6]  to-[#5d9ee2]  text-transparent bg-clip-text">
@@ -137,7 +131,7 @@ const AddBook = () => {
                     </span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder=" Quantity of the book"
                     name="quantity"
                     className="input input-bordered text-white  bg-transparent border-2 border-white rounded-[100px]"
@@ -173,14 +167,7 @@ const AddBook = () => {
                   name="rating"
                   required
                 />
-                {/* <input
                 
-                  type="text"
-                  placeholder="Rating"
-                  name="rating"
-                  className="input input-bordered text-white  bg-transparent border-2 border-white rounded-[100px]"
-                  required
-                /> */}
               </div>
               <input
                 className="btn btn-block rounded-[100px] bg-[#192e44] border-none text-white mt-8"

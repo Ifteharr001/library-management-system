@@ -7,9 +7,9 @@ const Home = () => {
     return (
         <div className="dark:bg-gray-800">
             <Hero></Hero>, 
-            <ServiceCard></ServiceCard>,
-            <Category></Category>,
-            <BlogSection></BlogSection> 
+            <ServiceCard></ServiceCard>, 
+           <Category></Category>,
+            <BlogSection></BlogSection>   
         </div>
     );
 };

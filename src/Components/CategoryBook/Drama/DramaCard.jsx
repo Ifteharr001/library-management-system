@@ -6,7 +6,7 @@ const DramaCard = ({ drama }) => {
   const { _id, image, authorName, name, bookCategory, rating } = drama;
   return (
     <div>
-      <div className="card h-[450px]   bg-base-100 shadow-xl border-4">
+      <div className="card h-[450px]  dark:bg-[#000] dark:text-white  bg-base-100 shadow-xl border-4">
         <figure>
           <img
             className="object-cover h-[250px] mt-4 "

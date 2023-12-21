@@ -1,7 +1,7 @@
 
 const BlogSection = () => {
     return (
-      <div className="py-16 w-[1140px] mx-auto">
+      <div className="py-16 lg:w-[1140px] mx-auto">
         <div className="text-center">
           <h1 className="font-bold text-5xl mb-6 dark:text-white">
             OUR{" "}

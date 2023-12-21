@@ -1,7 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import ReactStars from "react-rating-stars-component";
+import { useState } from "react";
 const UpdateBooks = () => {
+  const [rating, setRating] = useState(3);
+
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
+  };
   const data = useLoaderData();
   const {
     _id,
@@ -11,7 +17,7 @@ const UpdateBooks = () => {
     description,
     name,
     bookCategory,
-    rating,
+    
   } = data;
 
   const handleUpdateBook = (e) => {
@@ -23,7 +29,6 @@ const UpdateBooks = () => {
     const bookCategory = form.bookCategory.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
-    const rating = form.rating.value;
 
     const updateBook = {
       name,
@@ -32,7 +37,7 @@ const UpdateBooks = () => {
       bookCategory,
       quantity,
       description,
-      rating,
+      rating
     };
     fetch(
       ` https://library-management-system-server-steel.vercel.app/books/${_id}`,
@@ -149,7 +154,7 @@ const UpdateBooks = () => {
                     </span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder=" Quantity of the book"
                     name="quantity"
                     defaultValue={quantity}
@@ -179,12 +184,12 @@ const UpdateBooks = () => {
                     Rating
                   </span>
                 </label>
-                <input
-                  type="text"
-                  placeholder="Rating"
+                <ReactStars
+                  count={5} // Number of stars
+                  size={40}
+                  value={3} // Set the initial value
+                  onChange={ratingChanged}
                   name="rating"
-                  defaultValue={rating}
-                  className="input input-bordered text-white  bg-transparent border-2 border-white rounded-[100px]"
                   required
                 />
               </div>
